@@ -9,21 +9,23 @@ const Layout = ({ children , route }) => {
     toggle === "close" ? setToggle("open") : setToggle("close");
   }
   return (
-    <>
-      <Navbar1 toggle={handleToggle} />
+    <Container fluid>
+      <Row>
+        <Navbar1 toggle={handleToggle} />
+      </Row>
       <Row
-        lg={12}
         style={{
           height: "100vh",
+
           overflow: "auto",
         }}
       >
-        <Col xs={3}>
-          <Menu toggle={toggle} currentRoute={route}/>
+        <Col xs={4} md={4} lg={3}>
+          <Menu toggle={toggle} currentRoute={route} />
         </Col>
         <Col>{children}</Col>
       </Row>
-    </>
+    </Container>
   );
 };
 

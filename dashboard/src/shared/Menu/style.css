@@ -11,12 +11,16 @@ transition: all 1s ease-in-out;
 .menu{
     height:100vh ;
     overflow: auto;
+         transition: all 1s ease-in-out !important;
     background: #eee;
 }
+
 .primary{
     background-color:  #010e30;
-        color:white !important;
-
+     color:white !important;
+     transition: all 1s ease-in-out !important;
+     border-radius: 1em;
+     margin: 10px;
 }
 a{
     text-decoration: none !important;

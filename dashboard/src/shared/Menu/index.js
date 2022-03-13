@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
-import routes from "../../globals/route";
+import routes from "../../globals/routes";
 import { Nav } from "react-bootstrap";
 import "./style.css";
 import { Link } from "react-router-dom";
 
 const Menu = ({toggle , currentRoute}) => {
+  useEffect(()=>{
+
+
+  })
   return (
     <div className={toggle + " menu"} >
       <Nav
@@ -13,9 +17,10 @@ const Menu = ({toggle , currentRoute}) => {
       >
         {routes.map((route, index) => {
           return (
-            <Link to={route.path} key={index} className={currentRoute===route.path?"primary":""} >
+            route.display?
+            (<Link to={route.path} key={index} id={route.path} className={currentRoute===route.path?"primary":""} >
               {route.path.slice(1) || "Home"}
-            </Link>
+            </Link>) :null
           );
         })}
       </Nav>
