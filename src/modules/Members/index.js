@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
-import Layout from "../../shared/Layout";
-import MemberCard from "./Components/membercard";
 import axios from "axios";
+import Layout from "../../shared/Layout";
+import configs from "../../globals/config";
+import MemberCard from "./Components/membercard";
 import "./style.css";
+
 const Members = () => {
   const [users, setUsers] = useState();
-  async function getusers() {
-    axios.get(`http://localhost:8000/members/`).then((res) => {
+
+  useEffect(() => {
+    axios.get(`${configs.HOST}/crew/`).then((res) => {
       setUsers(res.data);
     });
-  }
-  useEffect(() => {
-    getusers();
-  }, [users]);
+  }, []);
 
-  const handledelete = async (id) => {
-    axios.delete(`http://localhost:8000/members/${id}`).then((res) => {
+  const handleDelete = async (id) => {
+    axios.delete(`${configs.HOST}/crew/${id}`).then((res) => {
       setUsers(res.data);
     });
   };
@@ -26,7 +26,7 @@ const Members = () => {
       {users ? (
         <div className="flex-container">
           {users.map((user) => (
-            <MemberCard key={user.id} user={user} handledelete={handledelete} />
+            <MemberCard key={user.id} user={user} handleDelete={handleDelete} />
           ))}
         </div>
       ) : null}

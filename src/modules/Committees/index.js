@@ -1,12 +1,12 @@
 import React from "react";
 import Layout from "../../shared/Layout";
 
-const Blogs = () => {
+const Committees = () => {
   return (
     <Layout>
-      <h1>Blogs</h1>
+      <h1>Committees</h1>
     </Layout>
   );
 };
 
-export default Blogs;
+export default Committees;

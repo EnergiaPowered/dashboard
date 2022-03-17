@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Navbar1 from "./../Navbar/index";
+import NavBar from "./../Navbar";
 import { Container, Row, Col } from "react-bootstrap";
-import NavMenu from "./../Menu/index";
+import NavMenu from "./../Menu";
 import "./style.css";
 
 const Layout = ({ children }) => {
@@ -11,20 +11,20 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <Container fluid style={{ background: "#eee" }}>
+    <Container fluid>
       <Row
-        style={{
-          height: "7vh",
-          overflow: "auto",
-        }}
+      // style={{
+      //   height: "7vh",
+      //   overflow: "auto",
+      // }}
       >
-        <Navbar1 toggleCollapsed={toggleCollapsed} collapsed={collapsed} />
+        <NavBar toggleCollapsed={toggleCollapsed} collapsed={collapsed} />
       </Row>
       <Row
-        style={{
-          height: "93vh",
-          overflow: "auto",
-        }}
+      // style={{
+      //   height: "93vh",
+      //   overflow: "auto",
+      // }}
       >
         <Col
           xs={collapsed ? 1 : 2}
@@ -38,12 +38,13 @@ const Layout = ({ children }) => {
               background: "#fff",
               left: "0px",
               width: collapsed ? "" : "15%",
+              paddingTop: "4rem",
             }}
           >
             <NavMenu collapsed={collapsed} />
           </div>
         </Col>
-        <Col>
+        <Col style={{ paddingTop: "6rem" }}>
           <div>{children}</div>
         </Col>
       </Row>

@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
-import Layout from "./../../../../shared/Layout/index";
 import axios from "axios";
+import Layout from "./../../../../shared/Layout/index";
+import configs from "../../../../globals/config";
 
 const MemberProfile = (props) => {
   const [user, setUser] = useState();
-  async function u (){
-        axios
-        .get(`http://localhost:8000/members/${props.match.params.id}`)
-        .then((res) => {
-           setUser(res.data)
-          console.log(res);
-        });    
-      }
-      useEffect(() => {
-        u()
-      },[]);
+
+  useEffect(() => {
+    axios
+      .get(`${configs.HOST}/members/${props.match.params.id}`)
+      .then((res) => {
+        setUser(res.data);
+        console.log(res);
+      });
+  }, [props.match.params.id]);
   return (
     <Layout>
-      <h1> member profile</h1>
+      <h1>Member Profile</h1>
       {user ? <h2>name: {user.name}</h2> : null}
     </Layout>
   );

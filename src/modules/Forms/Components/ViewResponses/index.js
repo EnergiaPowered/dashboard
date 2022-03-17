@@ -16,7 +16,7 @@ const ViewResponses = () => {
     getForms();
   }, [forms]);
 
-  const handledelete = async (name) => {
+  const handleDelete = async (name) => {
     axios
       .delete(`http://localhost:8000/api/form/response/${name}`)
       .then((res) => {
@@ -33,7 +33,7 @@ const ViewResponses = () => {
               <FormCard
                 key={index}
                 formName={formName}
-                handledelete={handledelete}
+                handleDelete={handleDelete}
               />
             </div>
           ))}

@@ -3,14 +3,15 @@ import Layout from "../../shared/Layout";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./style.css";
+
 const Form = () => {
   return (
     <Layout>
-      <h1>Form</h1>
+      <h1>Forms</h1>
       <Card className="Card">
         <Card.Body>
           <Card.Title>
-            <Link to={"/form/viewform"} id={"/form/viewform"}>
+            <Link to={"/form/view-form"} id={"/form/view-form"}>
               View Forms
             </Link>
           </Card.Title>
@@ -19,7 +20,7 @@ const Form = () => {
       <Card className="Card">
         <Card.Body>
           <Card.Title>
-            <Link to={"/form/formresponse"} id={"/form/formresponse"}>
+            <Link to={"/form/form-responses"} id={"/form/form-responses"}>
               View Responses
             </Link>
           </Card.Title>
@@ -28,7 +29,7 @@ const Form = () => {
       <Card className="Card">
         <Card.Body>
           <Card.Title>
-            <Link to={"/form/creation"} id={"/form/creation"}>
+            <Link to={"/form/create"} id={"/form/create"}>
               Create Form
             </Link>
           </Card.Title>

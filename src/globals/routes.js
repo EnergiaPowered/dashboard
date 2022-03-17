@@ -1,16 +1,16 @@
-import Home from "../modules/Home/index";
-import Events from "../modules/Events/index";
-import Blogs from "../modules/Blogs/index";
-import Members from "./../modules/Members/index";
-import Contact from "../modules/Contact/index";
-import Committies from "../modules/Committies/index";
-import Participants from "../modules/Participants/index";
-import Form from "../modules/Forms/index";
-import MemberProfile from "./../modules/Members/Components/member/index";
-import ViewResponses from "./../modules/Forms/Components/ViewResponses/index";
-import ViewForms from "./../modules/Forms/Components/ViewForms/index";
-import ResponseTable from "./../modules/Forms/Components/ViewResponses/Components/member/index";
-import FormGen from "./../modules/Forms/Components/FormGen/index";
+import Home from "../modules/Home";
+import Events from "../modules/Events";
+import Blogs from "../modules/Blogs";
+import Members from "./../modules/Members";
+import Contact from "../modules/Contact";
+import Committees from "../modules/Committees";
+import Participants from "../modules/Participants";
+import Form from "../modules/Forms";
+import MemberProfile from "./../modules/Members/Components/member";
+import ViewResponses from "./../modules/Forms/Components/ViewResponses";
+import ViewForms from "./../modules/Forms/Components/ViewForms";
+import ResponseTable from "./../modules/Forms/Components/ViewResponses/Components/member";
+import FormGen from "./../modules/Forms/Components/FormGen";
 
 const routes = [
   {
@@ -44,9 +44,9 @@ const routes = [
     display: true,
   },
   {
-    path: "/committies",
-    component: Committies,
-    label: "Committies",
+    path: "/committees",
+    component: Committees,
+    label: "Committees",
     display: true,
   },
   {
@@ -58,17 +58,17 @@ const routes = [
   {
     path: "/form",
     component: Form,
-    label: "Form",
+    label: "Forms",
     display: true,
     sub: [
       {
-        path: "/form/viewform",
+        path: "/form/view-form",
         component: ViewForms,
         label: "View Forms",
         display: true,
       },
       {
-        path: "/form/creation",
+        path: "/form/create",
         component: FormGen,
         label: "Create Form",
         display: true,
@@ -80,13 +80,13 @@ const routes = [
       //   display: false,
       // },
       {
-        path: "/form/formresponse",
+        path: "/form/form-responses",
         component: ViewResponses,
         label: "View Responses",
         display: true,
       },
       {
-        path: "/form/formresponse/:name",
+        path: "/form/form-responses/:name",
         component: ResponseTable,
         label: "Response Table",
         display: false,
@@ -94,13 +94,13 @@ const routes = [
     ],
   },
   {
-    path: "/form/viewform",
+    path: "/form/view-form",
     component: ViewForms,
     label: "View Forms",
     display: false,
   },
   {
-    path: "/form/creation",
+    path: "/form/create",
     component: FormGen,
     label: "Create Form",
     display: false,
@@ -112,20 +112,20 @@ const routes = [
   //   display: false,
   // },
   {
-    path: "/form/formresponse",
+    path: "/form/form-responses",
     component: ViewResponses,
     label: "View Responses",
     display: false,
   },
   {
-    path: "/form/formresponse/:name",
+    path: "/form/form-responses/:name",
     component: ResponseTable,
     label: "Response Table",
     display: false,
   },
 
   {
-    path: "/memberprofile/:id",
+    path: "/member/profile/:id",
     component: MemberProfile,
     label: "Member Profile",
     display: false,

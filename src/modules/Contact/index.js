@@ -1,9 +1,10 @@
 import React from "react";
-import Layout from "./../../shared/Layout/index";
+import Layout from "./../../shared/Layout";
+
 const Contact = () => {
   return (
     <Layout>
-      <h1>Contect</h1>
+      <h1>Contacts</h1>
     </Layout>
   );
 };

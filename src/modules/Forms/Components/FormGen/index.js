@@ -108,14 +108,11 @@ const FormGen = () => {
     // after submission messege
     // after form ddl messege
     <Layout>
-      <div
-        className="site-layout page-component"
-        style={{ padding: " 50px", background: "#eee" }}
-      >
+      <div className="site-layout page-component" style={{ padding: " 50px" }}>
         <Helmet>
-          <title>Energia Powered | Form Creation</title>
+          <title>Energia Powered | Create Form</title>
         </Helmet>
-        <h1 style={{ textAlign: "center", padding: "1em" }}>Form Creation</h1>
+        <h1 style={{ textAlign: "center", padding: "1em" }}>Create Form</h1>
         <br />
         <br />
 
@@ -174,6 +171,12 @@ const FormGen = () => {
                   name={"postSubmit"}
                   label="Post-Submission message :"
                   style={{ display: "block" }}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please enter a message",
+                    },
+                  ]}
                 >
                   <TextArea placeholder="Write a message to be shown after the form is submitted" />
                 </Form.Item>

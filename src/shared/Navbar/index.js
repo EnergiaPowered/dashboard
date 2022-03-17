@@ -6,9 +6,17 @@ import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 // import { faBars } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/EPLogo.png";
 
-const Navbar1 = ({ toggleCollapsed, collapsed }) => {
+const NavBar = ({ toggleCollapsed, collapsed }) => {
   return (
-    <Navbar style={{ background: "#010e30 " }} expand={false}>
+    <Navbar
+      style={{
+        background: "#010e30",
+        position: "fixed",
+        width: "100%",
+        zIndex: 20,
+      }}
+      expand={false}
+    >
       <Container fluid bg="#010e30">
         <Row xs={4}>
           <Col xs={2}>
@@ -46,4 +54,4 @@ const Navbar1 = ({ toggleCollapsed, collapsed }) => {
   );
 };
 
-export default Navbar1;
+export default NavBar;

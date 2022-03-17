@@ -11,7 +11,12 @@ const NavMenu = ({ collapsed }) => {
   const { SubMenu } = Menu;
 
   return (
-    <Menu mode="vertical" theme="light" inlineCollapsed={collapsed}>
+    <Menu
+      mode="vertical"
+      theme="light"
+      inlineCollapsed={collapsed}
+      style={{ minHeight: "100vh" }}
+    >
       {routes.map((route, index) => {
         return route.display && !route.sub ? (
           <Menu.Item key={index} icon={<AppstoreOutlined />}>
