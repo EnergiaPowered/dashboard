@@ -3,35 +3,44 @@ import axios from "axios";
 import Layout from "./../../../../../../shared/Layout/index";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
-
 const ResponseTable = (props) => {
   const [form, setForm] = useState();
   async function u() {
     axios
-    .get(`http://localhost:8000/forms/${props.match.params.name}`)
-    .then((res) => {
-      setForm(res.data);
-      console.log(res.data);
-    });
+      .get(`http://localhost:8000/api/form/response/${props.match.params.name}`)
+      .then((res) => {
+        console.log(res.data);
+        setForm(res.data);
+      });
   }
-  useEffect( () => {
-       u();
-  }, []); 
-  
+  useEffect(() => {
+    u();
+  }, []);
+
   return (
     <Layout>
-      <h1> member profile</h1>
       {form ? (
         <>
-          <h2>name: {form.name}</h2>
-          <ReactHTMLTableToExcel
-                    id="test-table-xls-button"
-                    className="download-table-xls-button"
-                    table="table-to-xls"
-                    filename="tablexls"
-                    sheet="tablexls"
-                    buttonText="Download as XLS"/>
-                <table id="table-to-xls">
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              textAlign: "center",
+            }}
+          >
+            <h1 style={{ margin: "auto" }}>Form {form.name} Responses</h1>
+            <ReactHTMLTableToExcel
+              id="test-table-xls-button"
+              className="download-table-xls-button"
+              table="table-to-xls"
+              filename={`Response-Table-${form.name}`}
+              sheet={`Response-Table-${form.name}`}
+              buttonText="Download as XLS"
+            />
+          </div>
+          <hr />
+          <table id="table-to-xls" className="table">
             <thead>
               <tr>
                 {form["headers"].map((header, index) => {
@@ -40,11 +49,11 @@ const ResponseTable = (props) => {
               </tr>
             </thead>
             <tbody>
-              {form["body"].map((element, index) => {
+              {form["content"].map((row, index) => {
                 return (
                   <tr key={index}>
-                    {form.headers.map((header, indx) => {
-                      return <td key={indx}>{element[header]}</td>;
+                    {row.map((tdata, indx) => {
+                      return <td key={indx}>{tdata}</td>;
                     })}
                   </tr>
                 );
@@ -58,5 +67,3 @@ const ResponseTable = (props) => {
 };
 
 export default ResponseTable;
-
-
