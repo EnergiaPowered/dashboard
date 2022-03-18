@@ -11,6 +11,15 @@ const Form = () => {
       <Card className="Card">
         <Card.Body>
           <Card.Title>
+            <Link to={"/form/create"} id={"/form/create"}>
+              Create Form
+            </Link>
+          </Card.Title>
+        </Card.Body>
+      </Card>
+      <Card className="Card">
+        <Card.Body>
+          <Card.Title>
             <Link to={"/form/view-form"} id={"/form/view-form"}>
               View Forms
             </Link>
@@ -22,15 +31,6 @@ const Form = () => {
           <Card.Title>
             <Link to={"/form/form-responses"} id={"/form/form-responses"}>
               View Responses
-            </Link>
-          </Card.Title>
-        </Card.Body>
-      </Card>
-      <Card className="Card">
-        <Card.Body>
-          <Card.Title>
-            <Link to={"/form/create"} id={"/form/create"}>
-              Create Form
             </Link>
           </Card.Title>
         </Card.Body>

@@ -1,8 +1,7 @@
 import React from "react";
-import "antd/dist/antd.css";
-import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import routes from "./globals/routes";
+import "./App.css";
 
 function App() {
   return (

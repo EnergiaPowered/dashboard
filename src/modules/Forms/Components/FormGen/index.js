@@ -1,53 +1,61 @@
 import React, { useState } from "react";
 import { Form, Input, Button, DatePicker } from "antd";
-import { Helmet } from "react-helmet";
-import QuestionGen from "./QuetionGen/QuestionGen";
-// import bg_blogs from "assets/Blogs-header.png";
-import configs from "../../../../globals/config";
 import axios from "axios";
-import "./index.css";
+import configs from "../../../../globals/config";
 import Layout from "../../../../shared/Layout";
+import QuestionGen from "./QuestionGen";
+import "./style.css";
 
 const FormGen = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [fields, setField] = useState([{ id: 1, value: {} }]);
+
   const { TextArea } = Input;
-  const [submitted, setSubmited] = useState(false);
-  const host = configs.HOST; /*"http://localhost:4000"*/ // localhost:4000 is my demo server matdo2e4 ":D
-  const FORM_END_POINT = `${host}form`;
+
   const getObjects = (someObj, partOfKey) => {
     let neededObjects = [];
+
     for (let key in someObj) {
       if (`${key}`.includes(partOfKey))
         neededObjects.push({ [key]: someObj[key] });
     }
+
     return neededObjects;
   };
+
   const getValue = (someArrOfObjs, partOfKey) => {
     let neededItem;
+
     for (let obj of someArrOfObjs) {
       for (let key in obj) {
         if (`${key}`.includes(partOfKey)) neededItem = obj[key];
       }
     }
+
     return neededItem;
   };
 
   const getField = (fieldProps) => {
     const fields = [];
+
     for (let i = 1; i <= fieldProps.fieldLabels.length; i++) {
       let field = {
         label: getValue(fieldProps.fieldLabels, `field_${i}_`),
         type: getValue(fieldProps.fieldAnswerTypes, `field_${i}_`),
-        isRequired: getValue(fieldProps.fieldisRequired, `field_${i}_`),
+        isRequired: getValue(fieldProps.fieldIsRequired, `field_${i}_`),
       };
+
       if (field.type === "Selection") {
         const modified = [];
         const options = getValue(fieldProps.fieldSelections, `field_${i}_`);
+
         for (let item of options) {
           modified.push({
             value: Object.values(item)[0],
             label: Object.values(item)[0],
           });
         }
+
         field["options"] = modified;
       } else {
         field["placeholder"] = getValue(
@@ -55,8 +63,10 @@ const FormGen = () => {
           `field_${i}_`
         );
       }
+
       fields.push(field);
     }
+
     return fields;
   };
 
@@ -66,7 +76,7 @@ const FormGen = () => {
       fieldAnswerTypes: getObjects(values, "_answerType"),
       fieldSelections: getObjects(values, "_selection"),
       fieldPlaceholders: getObjects(values, "_placeholder"),
-      fieldisRequired: getObjects(values, "_isRequired"),
+      fieldIsRequired: getObjects(values, "_isRequired"),
     };
 
     const formData = {
@@ -80,50 +90,43 @@ const FormGen = () => {
       endDate: values.endDate._d.toISOString(), //""
       fields: getField(fieldProps), //[{label:"", type:"", placeholder:""?, option:[{value,label}]?,isReq:bool}]
     };
-    console.log(formData);
+
     axios
-      .post(FORM_END_POINT, formData)
-      .then(function (response) {
+      .post(`${configs.HOST}/form`, formData)
+      .then((response) => {
         console.log(response);
       })
-      .then(() => setSubmited(true))
+      .then(() => setSubmitted(true))
       .catch(function (error) {
         console.log(error);
       });
   };
-  const [fields, setfield] = useState([{ id: 1, value: {} }]);
+
   const removeField = (id) => {
     const f = fields.filter((f) => f.id !== id);
-    setfield(f);
+    setField(f);
   };
+
   const addField = () => {
     const id = fields.length ? fields[fields.length - 1].id + 1 : 1;
-    setfield([...fields, { id: id, value: {} }]);
+    setField([...fields, { id: id, value: {} }]);
   };
+
   return (
-    // event title
-    // description
-    // QuestionGen
-    // Add question button
-    // after submission messege
-    // after form ddl messege
     <Layout>
-      <div className="site-layout page-component" style={{ padding: " 50px" }}>
-        <Helmet>
-          <title>Energia Powered | Create Form</title>
-        </Helmet>
-        <h1 style={{ textAlign: "center", padding: "1em" }}>Create Form</h1>
-        <br />
-        <br />
+      <div style={{ paddingBottom: " 3rem" }}>
+        <h1 style={{ textAlign: "center", marginBottom: " 3rem" }}>
+          Create Form
+        </h1>
 
         {submitted ? (
           <h2 style={{ textAlign: "center", padding: "5em" }}>
             Form is successfully created
           </h2>
         ) : (
-          <div className="row" style={{ marginTop: "1rem" }}>
-            <div className="col-lg-1 col-sm-0"></div>
-            <div className="col-lg-10 col-sm-12">
+          <div className="row">
+            <div className="col-lg-2 col-sm-0"></div>
+            <div className="col-lg-8 col-sm-12">
               <Form onFinish={submit} autoComplete="off">
                 <Form.Item
                   name={"name"}
@@ -156,20 +159,14 @@ const FormGen = () => {
                     <QuestionGen id={id} key={id} onRemove={removeField} />
                   ))}
                 </Form.Item>
-                <Button
-                  type="ghost"
-                  shape="round"
-                  onClick={() => addField()}
-                  block
-                >
+                <Button onClick={addField} block>
                   + Add field
                 </Button>
                 <br />
                 <br />
-                <br />
                 <Form.Item
                   name={"postSubmit"}
-                  label="Post-Submission message :"
+                  label="Post-Submission message"
                   style={{ display: "block" }}
                   rules={[
                     {
@@ -182,7 +179,7 @@ const FormGen = () => {
                 </Form.Item>
                 <Form.Item
                   name={"preEvent"}
-                  label="pre-Event message :"
+                  label="Pre-Event message"
                   style={{ display: "block" }}
                   rules={[
                     {
@@ -195,7 +192,7 @@ const FormGen = () => {
                 </Form.Item>
                 <Form.Item
                   name={"postEvent"}
-                  label="Post-Event message :"
+                  label="Post-Event message"
                   style={{ display: "block" }}
                   rules={[
                     {
@@ -209,7 +206,7 @@ const FormGen = () => {
 
                 <Form.Item
                   name={"resultSheet"}
-                  label="Google-Sheet link :"
+                  label="Google Sheet link"
                   style={{ display: "block" }}
                   rules={[
                     {
@@ -249,17 +246,12 @@ const FormGen = () => {
                   />
                 </Form.Item>
 
-                <Button
-                  type="ghost"
-                  shape="round"
-                  htmlType="submit"
-                  size="large"
-                  block
-                >
+                <Button htmlType="submit" size="large" block>
                   Apply
                 </Button>
               </Form>
             </div>
+            <div className="col-lg-2 col-sm-0"></div>
           </div>
         )}
       </div>
