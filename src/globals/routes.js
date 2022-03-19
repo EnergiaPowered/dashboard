@@ -11,6 +11,7 @@ import ViewResponses from "./../modules/Forms/Components/ViewResponses";
 import ViewForms from "./../modules/Forms/Components/ViewForms";
 import ResponseTable from "./../modules/Forms/Components/ViewResponses/Components/member";
 import FormGen from "./../modules/Forms/Components/FormGen";
+import Email from './../modules/SendMails/index';
 
 const routes = [
   {
@@ -123,7 +124,12 @@ const routes = [
     label: "Response Table",
     display: false,
   },
-
+  {
+    path: "/email",
+    component: Email,
+    label: "Send Email",
+    display: true,
+  },
   {
     path: "/member/profile/:id",
     component: MemberProfile,
