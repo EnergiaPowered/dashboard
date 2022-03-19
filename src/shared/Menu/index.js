@@ -1,11 +1,9 @@
 import React from "react";
 import { Menu } from "antd";
-import { AppstoreOutlined, LinkOutlined } from "@ant-design/icons";
-
-import routes from "../../globals/routes";
-// import { Nav } from "react-bootstrap";
-import "./style.css";
 import { Link } from "react-router-dom";
+import { AppstoreOutlined, LinkOutlined } from "@ant-design/icons";
+import routes from "../../globals/routes";
+import "./style.css";
 
 const NavMenu = ({ collapsed }) => {
   const { SubMenu } = Menu;

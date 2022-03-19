@@ -1,10 +1,41 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import configs from "../../globals/config";
 import Layout from "../../shared/Layout";
+import CommitteeCard from "./Components/CommitteeCard";
 
 const Committees = () => {
+  const [committees, setCommittees] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${configs.HOST}/committees`).then((res) => {
+      console.log(res.data);
+      setCommittees(res.data);
+    });
+  }, []);
+
+  const handleDelete = async (id) => {
+    axios.delete(`${configs.HOST}/committees/${id}`).then((res) => {
+      setCommittees(res.data);
+    });
+  };
+
   return (
     <Layout>
-      <h1>Committees</h1>
+      <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>Committees</h1>
+      {committees ? (
+        <div className="flex-container">
+          {committees.map((committee, index) => (
+            <CommitteeCard
+              key={index}
+              committee={committee}
+              handleDelete={handleDelete}
+            />
+          ))}
+        </div>
+      ) : (
+        <h3>There are no committees yet</h3>
+      )}
     </Layout>
   );
 };

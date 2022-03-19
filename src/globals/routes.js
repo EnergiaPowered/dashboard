@@ -1,17 +1,18 @@
 import Home from "../modules/Home";
 import Events from "../modules/Events";
 import Blogs from "../modules/Blogs";
-import Members from "./../modules/Members";
-import Contact from "../modules/Contact";
+import Contacts from "../modules/Contacts";
 import Committees from "../modules/Committees";
+import CommitteeDetails from "../modules/Committees/Components/CommitteeDetails";
 import Participants from "../modules/Participants";
 import Form from "../modules/Forms";
-import MemberProfile from "./../modules/Members/Components/member";
-import ViewResponses from "./../modules/Forms/Components/ViewResponses";
-import ViewForms from "./../modules/Forms/Components/ViewForms";
-import ResponseTable from "./../modules/Forms/Components/ViewResponses/Components/member";
 import FormGen from "./../modules/Forms/Components/FormGen";
 import Email from './../modules/SendMails/index';
+import ViewForms from "./../modules/Forms/Components/ViewForms";
+import ViewResponses from "./../modules/Forms/Components/ViewResponses";
+import ResponseTable from "../modules/Forms/Components/ViewResponses/Components/ResponseTable";
+import Members from "./../modules/Members";
+import MemberProfile from "../modules/Members/Components/MemberProfile";
 
 const routes = [
   {
@@ -39,9 +40,9 @@ const routes = [
     display: true,
   },
   {
-    path: "/contact",
-    component: Contact,
-    label: "Contact",
+    path: "/contacts",
+    component: Contacts,
+    label: "Contacts",
     display: true,
   },
   {
@@ -51,10 +52,22 @@ const routes = [
     display: true,
   },
   {
+    path: "/send-emails",
+    component: Email,
+    label: "Send Emails",
+    display: true,
+  },
+  {
+    path: "/committees/:title",
+    component: CommitteeDetails,
+    label: "",
+    display: false,
+  },
+  {
     path: "/participants",
     component: Participants,
     label: "Participants",
-    display: true,
+    display: false,
   },
   {
     path: "/form",
@@ -123,12 +136,6 @@ const routes = [
     component: ResponseTable,
     label: "Response Table",
     display: false,
-  },
-  {
-    path: "/email",
-    component: Email,
-    label: "Send Email",
-    display: true,
   },
   {
     path: "/member/profile/:id",

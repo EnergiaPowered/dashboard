@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Layout from "./../../../../../../shared/Layout/index";
+import Layout from "../../../../../../shared/Layout";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
+import configs from "../../../../../../globals/config";
 
 const ResponseTable = (props) => {
   const [form, setForm] = useState();
-  async function u() {
+
+  useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/form/response/${props.match.params.name}`)
+      .get(`${configs.HOST}/form/response/${props.match.params.name}`)
       .then((res) => {
         console.log(res.data);
         setForm(res.data);
       });
-  }
-  useEffect(() => {
-    u();
-  }, []);
+  }, [props.match.params.name]);
 
   return (
     <Layout>
@@ -34,8 +33,8 @@ const ResponseTable = (props) => {
               id="test-table-xls-button"
               className="download-table-xls-button"
               table="table-to-xls"
-              filename={`Response-Table-${form.name}`}
-              sheet={`Response-Table-${form.name}`}
+              filename={form.name}
+              sheet="Sheet1"
               buttonText="Download as XLS"
             />
           </div>

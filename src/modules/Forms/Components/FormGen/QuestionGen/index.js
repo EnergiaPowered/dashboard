@@ -1,11 +1,18 @@
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { Form, Input, Space, Button, Radio } from "antd";
 import React, { useState } from "react";
+import { Form, Input, Space, Button, Radio } from "antd";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //import './QuestionGen.css';
 
 const QuestionGen = ({ onRemove, id }) => {
+  const [answer, setAnswer] = useState();
+
   const { TextArea } = Input;
+
+  const handleAnswer = (type) => {
+    const a = makeAnswerField(type);
+    setAnswer(a);
+  };
 
   const makeAnswerField = (t) => {
     if (t === "TextArea")
@@ -27,6 +34,7 @@ const QuestionGen = ({ onRemove, id }) => {
           />
         </Form.Item>
       );
+
     if (t === "Selection")
       return (
         <Form.List name={`field_${id}_selection`}>
@@ -62,13 +70,7 @@ const QuestionGen = ({ onRemove, id }) => {
                 </Space>
               ))}
               <Form.Item>
-                <Button
-                  type="ghost"
-                  shape="round"
-                  onClick={() => add()}
-                  block
-                  className={"col-3"}
-                >
+                <Button onClick={add} className={"col-3"}>
                   + Add option
                 </Button>
               </Form.Item>
@@ -76,8 +78,8 @@ const QuestionGen = ({ onRemove, id }) => {
           )}
         </Form.List>
       );
-    if (t === "Title") return <Form.Item />;
-    if (t === "Text")
+
+    if (t === "Text" || t === "Email")
       return (
         <Form.Item
           rules={[
@@ -96,20 +98,13 @@ const QuestionGen = ({ onRemove, id }) => {
         </Form.Item>
       );
   };
-  const [answer, setAnswer] = useState();
-  const handleAnswer = (type) => {
-    const a = makeAnswerField(type);
-    setAnswer(a);
-  };
 
   return (
     <div
       style={{
-        boxShadow:
-          "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-        borderRadius: "1em",
+        boxShadow: "0 0 8px 0 rgba(0, 0, 0, 0.2)",
         padding: "1em",
-        margin: "1em",
+        margin: "1em 0",
       }}
     >
       <Form.Item noStyle>
@@ -160,6 +155,9 @@ const QuestionGen = ({ onRemove, id }) => {
           >
             <Radio.Button value="Text" style={{ background: "transparent" }}>
               Text
+            </Radio.Button>
+            <Radio.Button value="Email" style={{ background: "transparent" }}>
+              Email
             </Radio.Button>
             <Radio.Button
               value="TextArea"
