@@ -7,6 +7,7 @@ import CommitteeDetails from "../modules/Committees/Components/CommitteeDetails"
 import Participants from "../modules/Participants";
 import Form from "../modules/Forms";
 import FormGen from "./../modules/Forms/Components/FormGen";
+import Email from './../modules/SendMails/index';
 import ViewForms from "./../modules/Forms/Components/ViewForms";
 import ViewResponses from "./../modules/Forms/Components/ViewResponses";
 import ResponseTable from "../modules/Forms/Components/ViewResponses/Components/ResponseTable";
@@ -48,6 +49,12 @@ const routes = [
     path: "/committees",
     component: Committees,
     label: "Committees",
+    display: true,
+  },
+  {
+    path: "/send-emails",
+    component: Email,
+    label: "Send Emails",
     display: true,
   },
   {
@@ -130,7 +137,6 @@ const routes = [
     label: "Response Table",
     display: false,
   },
-
   {
     path: "/member/profile/:id",
     component: MemberProfile,
