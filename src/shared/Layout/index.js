@@ -12,20 +12,10 @@ const Layout = ({ children }) => {
 
   return (
     <Container fluid>
-      <Row
-      // style={{
-      //   height: "7vh",
-      //   overflow: "auto",
-      // }}
-      >
+      <Row>
         <NavBar toggleCollapsed={toggleCollapsed} collapsed={collapsed} />
       </Row>
-      <Row
-      // style={{
-      //   height: "93vh",
-      //   overflow: "auto",
-      // }}
-      >
+      <Row>
         <Col
           xs={collapsed ? 1 : 2}
           md={collapsed ? 1 : 2}

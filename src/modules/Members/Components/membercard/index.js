@@ -18,10 +18,10 @@ const MemberCard = ({ user, handleDelete }) => {
         <Card.Text>
           {user.position} - {user.committee}
         </Card.Text>
-        <div class="d-flex justify-content-between">
+        <div className="d-flex justify-content-between">
           <Button variant="primary">
-            <Link to={"/member/profile/" + user.id} style={{ color: "white" }}>
-              More Details
+            <Link to={"/member/profile/" + user.ID} style={{ color: "white" }}>
+              Open Profile
             </Link>
           </Button>
           <Button variant="danger" onClick={() => handleDelete(user.id)}>

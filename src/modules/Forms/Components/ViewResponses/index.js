@@ -1,41 +1,35 @@
-import React from "react";
-import Layout from "./../../../../shared/Layout/index";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
-import FormCard from "./Components/membercard/index";
+import Layout from "./../../../../shared/Layout/index";
+import FormCard from "./Components/FormCard/index";
+import configs from "../../../../globals/config";
 
 const ViewResponses = () => {
   const [forms, setForms] = useState();
-  async function getForms() {
-    axios.get(`http://localhost:8000/api/form/response/`).then((res) => {
-      console.log(res.data);
+
+  useEffect(() => {
+    axios.get(`${configs.HOST}/form/`).then((res) => {
       setForms(res.data);
     });
-  }
-  useEffect(() => {
-    getForms();
-  }, [forms]);
+  }, []);
 
   const handleDelete = async (name) => {
-    axios
-      .delete(`http://localhost:8000/api/form/response/${name}`)
-      .then((res) => {
-        setForms(res.data);
-      });
+    axios.delete(`${configs.HOST}/form/${name}`).then((res) => {
+      setForms(res.data);
+    });
   };
+
   return (
-    <Layout route="/forms">
-      <h1>Forms</h1>
+    <Layout>
+      <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>Forms</h1>
       {forms ? (
         <div className="flex-container">
-          {forms.map((formName, index) => (
-            <div>
-              <FormCard
-                key={index}
-                formName={formName}
-                handleDelete={handleDelete}
-              />
-            </div>
+          {forms.map(({ title: formName }, index) => (
+            <FormCard
+              key={index}
+              formName={formName}
+              handleDelete={handleDelete}
+            />
           ))}
         </div>
       ) : null}
