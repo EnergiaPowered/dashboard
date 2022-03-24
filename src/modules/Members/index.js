@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Layout from "../../shared/Layout";
 import configs from "../../globals/config";
-import MemberCard from "./Components/MemberCard";
+// import MemberCard from "./Components/MemberCard";
 import "./style.css";
 
 const Members = () => {
@@ -14,20 +14,20 @@ const Members = () => {
     });
   }, []);
 
-  const handleDelete = async (id) => {
-    axios.delete(`${configs.HOST}/crew/${id}`).then((res) => {
-      setUsers(res.data);
-    });
-  };
+  // const handleDelete = async (id) => {
+  //   axios.delete(`${configs.HOST}/crew/${id}`).then((res) => {
+  //     setUsers(res.data);
+  //   });
+  // };
 
   return (
     <Layout>
-      <h1>Members</h1>
+      <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>Members</h1>
       {users ? (
         <div className="flex-container">
-          {users.map((user) => (
-            <MemberCard key={user.id} user={user} handleDelete={handleDelete} />
-          ))}
+          {/* {users.map((user, index) => (
+            <MemberCard key={index} user={user} handleDelete={handleDelete} />
+          ))} */}
         </div>
       ) : null}
     </Layout>
