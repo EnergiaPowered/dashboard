@@ -9,7 +9,7 @@ const ResponseTable = (props) => {
 
   useEffect(() => {
     axios
-      .get(`${configs.HOST}/form/response/${props.match.params.name}`)
+      .get(`${configs.HOST}/formRes/${props.match.params.name}`)
       .then((res) => {
         console.log(res.data);
         setForm(res.data);
@@ -28,7 +28,7 @@ const ResponseTable = (props) => {
               textAlign: "center",
             }}
           >
-            <h1 style={{ margin: "auto" }}>Form {form.name} Responses</h1>
+            <h1 style={{ margin: "auto" }}>{form.name} Form Responses</h1>
             <ReactHTMLTableToExcel
               id="test-table-xls-button"
               className="download-table-xls-button"
@@ -51,8 +51,8 @@ const ResponseTable = (props) => {
               {form["content"].map((row, index) => {
                 return (
                   <tr key={index}>
-                    {row.map((tdata, indx) => {
-                      return <td key={indx}>{tdata}</td>;
+                    {form["headers"].map((header, indx) => {
+                      return <td key={indx}>{row[header]}</td>;
                     })}
                   </tr>
                 );

@@ -14,7 +14,7 @@ const ViewResponses = () => {
   }, []);
 
   const handleDelete = async (name) => {
-    axios.delete(`${configs.HOST}/form/${name}`).then((res) => {
+    axios.delete(`${configs.HOST}/formRes/${name}`).then((res) => {
       setForms(res.data);
     });
   };

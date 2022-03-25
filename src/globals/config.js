@@ -1,7 +1,7 @@
 const configs = {
   HOST:
     process.env.NODE_ENV === "development"
-      ? "http://localhost:4000/api"
+      ? "http://localhost:4004/api"
       : "https://energia21.herokuapp.com/api",
 };
 

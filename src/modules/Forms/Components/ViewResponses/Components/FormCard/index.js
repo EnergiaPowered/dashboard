@@ -1,9 +1,18 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
+import { Popconfirm, message } from "antd";
 import { Link } from "react-router-dom";
 import "./style.css";
 
 const FormCard = ({ formName, handleDelete }) => {
+  const confirm = (e) => {
+    handleDelete(formName);
+    message.error("Responses Deleted");
+  };
+
+  function cancel(e) {
+    message.success("Responses not Deleted");
+  }
   return (
     <Card style={{ flex: "30%", margin: "0.5em" }}>
       <Card.Body>
@@ -21,9 +30,16 @@ const FormCard = ({ formName, handleDelete }) => {
               View Responses
             </Link>
           </Button>
-          <Button variant="danger" onClick={() => handleDelete(formName)}>
-            Delete
-          </Button>
+
+          <Popconfirm
+            title="Are you sure to delete that?"
+            onConfirm={confirm}
+            onCancel={cancel}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button variant="danger">Delete</Button>
+          </Popconfirm>
         </div>
       </Card.Body>
     </Card>
