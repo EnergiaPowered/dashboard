@@ -60,7 +60,9 @@ const ResponseTable = (props) => {
             </tbody>
           </table>
         </>
-      ) : null}
+      ) : (
+        <h1> Form Response not Found</h1>
+      )}
     </Layout>
   );
 };
