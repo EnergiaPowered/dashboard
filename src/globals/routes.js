@@ -13,6 +13,7 @@ import ViewResponses from "./../modules/Forms/Components/ViewResponses";
 import ResponseTable from "../modules/Forms/Components/ViewResponses/Components/ResponseTable";
 import Members from "./../modules/Members";
 import MemberProfile from "../modules/Members/Components/MemberProfile";
+import BlogProfile from './../modules/Blogs/Components/BlogsProfile/index';
 
 const routes = [
   {
@@ -141,6 +142,12 @@ const routes = [
     path: "/member/profile/:id",
     component: MemberProfile,
     label: "Member Profile",
+    display: false,
+  },
+  {
+    path: "/blog/profile/:id",
+    component: BlogProfile,
+    label: "Blog Profile",
     display: false,
   },
 ];

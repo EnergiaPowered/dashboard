@@ -18,7 +18,7 @@ const CommitteeCard = ({ committee, handleDelete }) => {
               to={"/committees/" + committee.title}
               style={{ color: "#fff" }}
             >
-              View Responses
+              View committee
             </Link>
           </Button>
           <Button variant="danger" onClick={() => handleDelete(committee._id)}>
