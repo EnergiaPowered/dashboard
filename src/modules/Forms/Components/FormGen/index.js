@@ -90,9 +90,23 @@ const FormGen = () => {
       endDate: values.endDate._d.toISOString(), //""
       fields: getField(fieldProps), //[{label:"", type:"", placeholder:""?, option:[{value,label}]?,isReq:bool}]
     };
+    const formRes = {
+      name: formData.title,
+      headers: fieldProps.fieldLabels,
+      content: [],
+    };
 
     axios
       .post(`${configs.HOST}/form`, formData)
+      .then((response) => {
+        console.log(response);
+      })
+      .then(() => setSubmitted(true))
+      .catch(function (error) {
+        console.log(error);
+      });
+    axios
+      .post(`${configs.HOST}/formRes`, formRes)
       .then((response) => {
         console.log(response);
       })

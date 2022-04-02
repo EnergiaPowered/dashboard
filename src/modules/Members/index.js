@@ -22,11 +22,11 @@ const Members = () => {
 
   return (
     <Layout>
-      <h1>Members</h1>
+      <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>Members</h1>
       {users ? (
         <div className="flex-container">
-          {users.map((user) => (
-            <MemberCard key={user.id} user={user} handleDelete={handleDelete} />
+          {users.map((user, index) => (
+            <MemberCard key={index} user={user} handleDelete={handleDelete} />
           ))}
         </div>
       ) : null}

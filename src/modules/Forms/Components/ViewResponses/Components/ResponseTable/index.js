@@ -9,8 +9,11 @@ const ResponseTable = (props) => {
 
   useEffect(() => {
     axios
-      .get(`${configs.HOST}/form/response/${props.match.params.name}`)
+      .get(`${configs.HOST}/formRes/${props.match.params.name}`)
       .then((res) => {
+        res.data.headers = res.data.headers.map(
+          (header, index) => header[`field_${index + 1}_label`]
+        );
         console.log(res.data);
         setForm(res.data);
       });
@@ -28,7 +31,9 @@ const ResponseTable = (props) => {
               textAlign: "center",
             }}
           >
-            <h1 style={{ margin: "auto" }}>Form {form.name} Responses</h1>
+            <h1 style={{ margin: "auto", textTransform: "capitalize" }}>
+              {form.name}
+            </h1>
             <ReactHTMLTableToExcel
               id="test-table-xls-button"
               className="download-table-xls-button"
@@ -48,19 +53,21 @@ const ResponseTable = (props) => {
               </tr>
             </thead>
             <tbody>
-              {form["content"].map((row, index) => {
+              {/* {form["content"].map((row, index) => {
                 return (
                   <tr key={index}>
-                    {row.map((tdata, indx) => {
-                      return <td key={indx}>{tdata}</td>;
+                    {form["headers"].map((header, indx) => {
+                      return <td key={indx}>{row[header]}</td>;
                     })}
                   </tr>
                 );
-              })}
+              })} */}
             </tbody>
           </table>
         </>
-      ) : null}
+      ) : (
+        <h1> Form Response not Found</h1>
+      )}
     </Layout>
   );
 };
