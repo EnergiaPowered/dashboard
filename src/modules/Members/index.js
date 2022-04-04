@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Layout from "../../shared/Layout";
 import configs from "../../globals/config";
-import MemberCard from "./Components/membercard/index";
+import MemberCard from "./Components/MemberCard/index";
 import "./style.css";
 
 const Members = () => {

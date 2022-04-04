@@ -3,7 +3,7 @@ import axios from "axios";
 import Layout from "../../../../shared/Layout/index";
 import configs from "../../../../globals/config";
 
-const BlogProfile = (props) => {
+const BlogDetails = (props) => {
   const [blog, setBlog] = useState();
 
   useEffect(() => {
@@ -26,4 +26,4 @@ const BlogProfile = (props) => {
   );
 };
 
-export default BlogProfile;
+export default BlogDetails;

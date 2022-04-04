@@ -3,7 +3,7 @@ import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-const BlogsCard = ({ title, handleDelete }) => {
+const BlogsCard = ({id, title, handleDelete }) => {
   console.log(title);
   return (
     <Card style={{ flex: "30%", margin: "0.5em" ,maxWidth: "30%"}}>
@@ -12,11 +12,11 @@ const BlogsCard = ({ title, handleDelete }) => {
         
         <div className="d-flex justify-content-between">
           <Button variant="primary">
-            <Link to={"/blog/profile/" + title.ID} style={{ color: "white" }}>
+            <Link to={"/blog/" + id} style={{ color: "white" }}>
               view blog
             </Link>
           </Button>
-          <Button variant="danger" onClick={() => handleDelete(title.id)}>
+          <Button variant="danger" onClick={() => handleDelete(id)}>
             Delete
           </Button>
         </div>

@@ -13,7 +13,7 @@ import ViewResponses from "./../modules/Forms/Components/ViewResponses";
 import ResponseTable from "../modules/Forms/Components/ViewResponses/Components/ResponseTable";
 import Members from "./../modules/Members";
 import MemberProfile from "../modules/Members/Components/MemberProfile";
-import BlogProfile from './../modules/Blogs/Components/BlogsProfile/index';
+import BlogDetails from './../modules/Blogs/Components/BlogsDetails/index';
 
 const routes = [
   {
@@ -145,9 +145,9 @@ const routes = [
     display: false,
   },
   {
-    path: "/blog/profile/:id",
-    component: BlogProfile,
-    label: "Blog Profile",
+    path: "/blog/:id",
+    component: BlogDetails,
+    label: "Blog Details",
     display: false,
   },
 ];
