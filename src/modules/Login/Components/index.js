@@ -36,7 +36,7 @@ function Login({ props }) {
   if (loggedIn) return <Redirect to="/" />;
 
   return (
-    <div className="container login-container">
+    <div className="container login-container" style={{ marginTop: "5rem" }}>
       <h1 className="login-header">Log In</h1>
 
       <div className="login-form">

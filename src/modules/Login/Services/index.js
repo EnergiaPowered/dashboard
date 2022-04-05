@@ -2,11 +2,10 @@ import axios from "axios";
 import config from "../../../globals/config";
 
 const login = async ({ email, password }) => {
-  const response = await axios
-    .post(`${config.HOST}login`, {
-      email,
-      password,
-    });
+  const response = await axios.post(`${config.HOST}/login`, {
+    email,
+    password,
+  });
   if (response.data.token) {
     localStorage.setItem("user", response.data.token);
   }

@@ -3,6 +3,8 @@ import NavBar from "./../Navbar";
 import { Container, Row, Col } from "react-bootstrap";
 import NavMenu from "./../Menu";
 import "./style.css";
+import { Redirect } from "react-router-dom";
+import authHeader from "../../globals/auth-header";
 
 const Layout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -10,6 +12,9 @@ const Layout = ({ children }) => {
     setCollapsed(!collapsed);
   };
 
+  if (!Object.keys(authHeader()).length) {
+    return <Redirect to="/login" />;
+  }
   return (
     <Container fluid>
       <Row>
