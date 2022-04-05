@@ -14,7 +14,6 @@ import ResponseTable from "../modules/Forms/Components/ViewResponses/Components/
 import Members from "./../modules/Members";
 import MemberProfile from "../modules/Members/Components/MemberProfile";
 import BlogDetails from './../modules/Blogs/Components/BlogsDetails/index';
-import authHeader from "./auth-header";
 import LoginPage from './../modules/Login';
 
 
@@ -156,7 +155,7 @@ const routes = [
   {
     path: "/login",
     component: LoginPage,
-    display: true,//Object.keys(authHeader()).length ? true : false,
+    display: false,
     label: "Log In",
     
   },

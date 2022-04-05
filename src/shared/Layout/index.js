@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
   return (
     <Container fluid>
       <Row>
-        <NavBar toggleCollapsed={toggleCollapsed} collapsed={collapsed} />
+        <NavBar toggleCollapsed={toggleCollapsed} collapsed={collapsed} flag={true} />
       </Row>
       <Row>
         <Col

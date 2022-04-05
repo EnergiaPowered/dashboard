@@ -6,7 +6,7 @@ import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 // import { faBars } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/EPLogo.png";
 
-const NavBar = ({ toggleCollapsed, collapsed }) => {
+const NavBar = ({ toggleCollapsed, collapsed ,flag}) => {
   return (
     <Navbar
       style={{
@@ -34,7 +34,8 @@ const NavBar = ({ toggleCollapsed, collapsed }) => {
             <h2 style={{ color: "white" }}>Dashboard</h2>
           </Col>
           <Col xs={1}>
-            <div
+            {flag ?
+           ( <div
               onClick={toggleCollapsed}
               style={{
                 marginLeft: "0.4em",
@@ -45,7 +46,8 @@ const NavBar = ({ toggleCollapsed, collapsed }) => {
               type="ghost"
             >
               {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            </div>
+            </div>):null
+}
           </Col>
           <Col xs={4}></Col>
         </Row>
