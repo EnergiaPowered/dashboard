@@ -6,6 +6,7 @@ import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 // import { faBars } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/EPLogo.png";
 import authHeader from "../../globals/auth-header";
+import { logout } from "../../modules/Login/Services";
 
 const NavBar = ({ toggleCollapsed, collapsed }) => {
   return (
@@ -58,7 +59,7 @@ const NavBar = ({ toggleCollapsed, collapsed }) => {
           <Button
             variant="outline-light"
             onClick={() => {
-              localStorage.removeItem("user");
+              logout();
               window.location.reload();
             }}
           >
