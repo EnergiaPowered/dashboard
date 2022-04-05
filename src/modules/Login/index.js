@@ -40,7 +40,7 @@ export default function Login(props) {
   return (
     <>
       <NavBar />
-      <main className="container" style={{ marginTop: "5rem" }}>
+      <main className="container" style={{ paddingTop: "5rem" }}>
         <h1>Log In</h1>
         <Form form={form} onFinish={handleLogin}>
           {message && (
