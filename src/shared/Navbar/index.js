@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Navbar, Row, Col } from "react-bootstrap";
+import { Container, Navbar, Row, Col, Button } from "react-bootstrap";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,7 +7,7 @@ import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import logo from "../../assets/EPLogo.png";
 import authHeader from "../../globals/auth-header";
 
-const NavBar = ({ toggleCollapsed, collapsed, flag }) => {
+const NavBar = ({ toggleCollapsed, collapsed }) => {
   return (
     <Navbar
       style={{
@@ -54,6 +54,17 @@ const NavBar = ({ toggleCollapsed, collapsed, flag }) => {
           </Col>
           <Col xs={4}></Col>
         </Row>
+        {Object.keys(authHeader()).length !== 0 && (
+          <Button
+            variant="outline-light"
+            onClick={() => {
+              localStorage.removeItem("user");
+              window.location.reload();
+            }}
+          >
+            logout
+          </Button>
+        )}
       </Container>
     </Navbar>
   );

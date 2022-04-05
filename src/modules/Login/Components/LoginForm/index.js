@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { Form, Input, Button } from "antd";
-import login from "../Services/index";
-import authHeader from "../../../globals/auth-header";
+import login from "../../Services";
+import authHeader from "../../../../globals/auth-header";
 
-function Login({ props }) {
+function LoginForm({ props }) {
   const loggedIn = Object.keys(authHeader()).length ? true : false;
 
   const [loading, setLoading] = useState(false);
@@ -81,7 +81,7 @@ function Login({ props }) {
           <div className="login-submit-container">
             <Form.Item className="login-submit">
               <Button
-                type="secondry"
+                type="secondary"
                 htmlType="submit"
                 size="large"
                 disabled={loading}
@@ -89,9 +89,6 @@ function Login({ props }) {
                 Log In
               </Button>
             </Form.Item>
-            <Link to="/signup">
-              <small>Don't have an account?</small>
-            </Link>
           </div>
         </Form>
       </div>
@@ -99,4 +96,4 @@ function Login({ props }) {
   );
 }
 
-export default Login;
+export default LoginForm;

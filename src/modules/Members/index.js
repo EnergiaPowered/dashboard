@@ -6,27 +6,36 @@ import MemberCard from "./Components/MemberCard/index";
 import "./style.css";
 
 const Members = () => {
-  const [users, setUsers] = useState();
+  const [members, setMembers] = useState();
 
   useEffect(() => {
     axios.get(`${configs.HOST}/crew/`).then((res) => {
-      setUsers(res.data);
+      setMembers(res.data);
     });
   }, []);
 
   const handleDelete = async (id) => {
     axios.delete(`${configs.HOST}/crew/${id}`).then((res) => {
-      setUsers(res.data);
+      setMembers(res.data);
     });
   };
 
   return (
     <Layout>
       <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>Members</h1>
-      {users ? (
+      {members ? (
         <div className="flex-container">
-          {users.map((user, index) => (
-            <MemberCard key={index} user={user} handleDelete={handleDelete} />
+          {Object.keys(members).map((committee, index) => (
+            <div key={committee}>
+              <h1 className="mb-3">{committee}</h1>
+              {members[committee].map((member) => (
+                <MemberCard
+                  key={index}
+                  member={member}
+                  handleDelete={handleDelete}
+                />
+              ))}
+            </div>
           ))}
         </div>
       ) : null}
