@@ -18,18 +18,16 @@ const Blogs = () => {
 
   const handleDelete = async (id) => {
     axios.delete(`${configs.HOST}/blogs/${id}`).then((res) => {
-      setBlogs([]);
+            setBlogs(res.data);
     });
   };
   const handleDeleteAll = async () => {
     axios.delete(`${configs.HOST}/blogs/`).then((res) => {
-      setBlogs(res.data);
+            setBlogs([]);
     });
   };
   const CreateBlog = async () => {
-    axios.delete(`${configs.HOST}/blogs/`).then((res) => {
-      setBlogs(res.data);
-    });
+    console.log("create blog");
   };
   console.log(blogs);
 
@@ -37,19 +35,20 @@ const Blogs = () => {
     <Layout>
       <h1>Blogs</h1>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Button variant="primary" onClick={() => handleDeleteAll()}>
+        <Button variant="primary" onClick={() => CreateBlog()}>
           Create Blog
         </Button>
-        <Button variant="danger" onClick={() => CreateBlog()}>
+        <Button variant="danger" onClick={() => handleDeleteAll()}>
           Delete All
         </Button>
       </div>
       {blogs ? (
         <div className="flex-container">
-          {blogs.map((e, index) => (
+          {blogs.map((blog, index) => (
             <BlogsCard
               key={index}
-              title={e.title}
+              title={blog.title}
+              id={blog.id}
               handleDelete={handleDelete}
             />
           ))}

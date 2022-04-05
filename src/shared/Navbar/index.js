@@ -1,10 +1,12 @@
 import React from "react";
-import { Container, Navbar, Row, Col } from "react-bootstrap";
+import { Container, Navbar, Row, Col, Button } from "react-bootstrap";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faBars } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/EPLogo.png";
+import authHeader from "../../globals/auth-header";
+import { logout } from "../../modules/Login/Services";
 
 const NavBar = ({ toggleCollapsed, collapsed }) => {
   return (
@@ -12,7 +14,9 @@ const NavBar = ({ toggleCollapsed, collapsed }) => {
       style={{
         background: "#010e30",
         position: "fixed",
-        width: "100%",
+        top: "0",
+        left: "0",
+        right: "0",
         zIndex: 20,
       }}
       expand={false}
@@ -31,24 +35,37 @@ const NavBar = ({ toggleCollapsed, collapsed }) => {
             />
           </Col>
           <Col xs={6}>
-            <h2 style={{ color: "white" }}>Dashboard</h2>
+            <h2 style={{ color: "white", marginBottom: 0 }}>Dashboard</h2>
           </Col>
           <Col xs={1}>
-            <div
-              onClick={toggleCollapsed}
-              style={{
-                marginLeft: "0.4em",
-                color: "#fff",
-                fontSize: "1.3em",
-                cursor: "pointer",
-              }}
-              type="ghost"
-            >
-              {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            </div>
+            {Object.keys(authHeader()).length !== 0 && (
+              <div
+                onClick={toggleCollapsed}
+                style={{
+                  marginLeft: "0.4em",
+                  color: "#fff",
+                  fontSize: "1.3em",
+                  cursor: "pointer",
+                }}
+                type="ghost"
+              >
+                {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              </div>
+            )}
           </Col>
           <Col xs={4}></Col>
         </Row>
+        {Object.keys(authHeader()).length !== 0 && (
+          <Button
+            variant="outline-light"
+            onClick={() => {
+              logout();
+              window.location.reload();
+            }}
+          >
+            logout
+          </Button>
+        )}
       </Container>
     </Navbar>
   );
