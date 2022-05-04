@@ -2,7 +2,7 @@ import axios from "axios";
 import config from "../../../globals/config";
 
 export const login = async ({ email, password }) => {
-  const response = await axios.post(`${config.HOST}/login`, {
+  const response = await axios.post(`${config.HOST}/login/admin`, {
     email,
     password,
   });
