@@ -26,11 +26,11 @@ const Members = () => {
       {members ? (
         <div className="flex-container">
           {Object.keys(members).map((committee, index) => (
-            <div key={committee}>
+            <div key={index}>
               <h1 className="mb-3">{committee}</h1>
-              {members[committee].map((member) => (
+              {members[committee].map((member, idx) => (
                 <MemberCard
-                  key={index}
+                  key={idx}
                   member={member}
                   handleDelete={handleDelete}
                 />

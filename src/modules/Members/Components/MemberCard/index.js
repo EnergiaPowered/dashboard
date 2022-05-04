@@ -1,4 +1,5 @@
 import React from "react";
+import LazyLoad from "react-lazyload";
 import { Card, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./style.css";
@@ -7,11 +8,13 @@ const MemberCard = ({ member, handleDelete }) => {
   return (
     <Card style={{ flex: "30%", margin: "0.5em" }}>
       <Container style={{ padding: 0 }}>
-        <Card.Img
-          variant="top"
-          src={`https://drive.google.com/uc?exort=view&id=${member.imageID}`}
-          style={{ maxWidth: "100%", objectFit: "cover", height: "17rem" }}
-        />
+        <LazyLoad offset={100} height={400}>
+          <Card.Img
+            variant="top"
+            src={member.image}
+            style={{ maxWidth: "100%", objectFit: "cover", height: "17rem" }}
+          />
+        </LazyLoad>
       </Container>
       <Card.Body>
         <Card.Title>{member.name}</Card.Title>

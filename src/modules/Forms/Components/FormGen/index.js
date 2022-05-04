@@ -219,20 +219,6 @@ const FormGen = () => {
                 </Form.Item>
 
                 <Form.Item
-                  name={"resultSheet"}
-                  label="Google Sheet link"
-                  style={{ display: "block" }}
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please enter a the link of the sheet",
-                    },
-                  ]}
-                >
-                  <Input placeholder="Insert link of the sheet in-which results shall be stored " />
-                </Form.Item>
-
-                <Form.Item
                   rules={[
                     {
                       required: true,
