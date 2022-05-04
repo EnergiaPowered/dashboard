@@ -72,7 +72,7 @@ const ResponseTable = (props) => {
           </table>
         </>
       ) : (
-        <h1> Form Response not Found</h1>
+        <h1>Loading...</h1>
       )}
     </Layout>
   );
