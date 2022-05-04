@@ -17,7 +17,7 @@ const Form = () => {
           </Card.Title>
         </Card.Body>
       </Card>
-      <Card className="Card">
+      {/* <Card className="Card">
         <Card.Body>
           <Card.Title>
             <Link to={"/form/view-form"} id={"/form/view-form"}>
@@ -25,7 +25,7 @@ const Form = () => {
             </Link>
           </Card.Title>
         </Card.Body>
-      </Card>
+      </Card> */}
       <Card className="Card">
         <Card.Body>
           <Card.Title>

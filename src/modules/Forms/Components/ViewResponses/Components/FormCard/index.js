@@ -24,7 +24,7 @@ const FormCard = ({ formName, handleDelete }) => {
         <div className="d-flex justify-content-between">
           <Button>
             <Link
-              to={"/form/form-responses/" + formName}
+              to={"/form/form-responses/" + formName.split(" ").join("-")}
               style={{ color: "#fff" }}
             >
               View Responses
