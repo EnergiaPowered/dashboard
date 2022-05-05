@@ -96,8 +96,13 @@ const FormGen = () => {
       content: [],
     };
 
+    const headers = {
+        'Content-Type': 'application/json',
+	'x-auth-token': localStorage.getItem("user")
+    }
+
     axios
-      .post(`${configs.HOST}/form`, formData)
+      .post(`${configs.HOST}/form`, formData, { headers })
       .then((response) => {
         console.log(response);
       })
@@ -106,7 +111,7 @@ const FormGen = () => {
         console.log(error);
       });
     axios
-      .post(`${configs.HOST}/formRes`, formRes)
+      .post(`${configs.HOST}/formRes`, formRes, { headers })
       .then((response) => {
         console.log(response);
       })
