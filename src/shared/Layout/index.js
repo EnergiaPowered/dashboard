@@ -41,7 +41,12 @@ const Layout = ({ children }) => {
             <NavMenu collapsed={collapsed} />
           </div>
         </Col>
-        <Col style={{ paddingTop: "6rem" }}>
+        <Col
+          xs={collapsed ? 11 : 10}
+          md={collapsed ? 11 : 10}
+          lg={collapsed ? 11 : 10}
+          style={{ paddingTop: "6rem" }}
+        >
           <div>{children}</div>
         </Col>
       </Row>
