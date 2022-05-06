@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import moment from "moment";
 import Layout from "../../../../../../shared/Layout";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import configs from "../../../../../../globals/config";
+import "./style.css";
 
 const ResponseTable = (props) => {
   const [form, setForm] = useState();
@@ -50,23 +52,27 @@ const ResponseTable = (props) => {
                 {form["headers"].map((header, index) => {
                   return <th key={index}>{header}</th>;
                 })}
+                <th>Timestamp</th>
               </tr>
             </thead>
             <tbody>
-              {/* {form["content"].map((row, index) => {
+              {form["content"].map((row, index) => {
                 return (
                   <tr key={index}>
                     {form["headers"].map((header, indx) => {
                       return <td key={indx}>{row[header]}</td>;
                     })}
+                    <td>
+                      {moment(row.timestamp).format("DD/MM/YYYY, h:mm:ss A")}
+                    </td>
                   </tr>
                 );
-              })} */}
+              })}
             </tbody>
           </table>
         </>
       ) : (
-        <h1> Form Response not Found</h1>
+        <h1>Loading...</h1>
       )}
     </Layout>
   );

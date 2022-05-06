@@ -7,16 +7,15 @@ import CommitteeDetails from "../modules/Committees/Components/CommitteeDetails"
 import Participants from "../modules/Participants";
 import Form from "../modules/Forms";
 import FormGen from "./../modules/Forms/Components/FormGen";
-import Email from './../modules/SendMails/index';
+import Email from "./../modules/SendMails/";
 import ViewForms from "./../modules/Forms/Components/ViewForms";
 import ViewResponses from "./../modules/Forms/Components/ViewResponses";
 import ResponseTable from "../modules/Forms/Components/ViewResponses/Components/ResponseTable";
 import Members from "./../modules/Members";
 import MemberProfile from "../modules/Members/Components/MemberProfile";
-import BlogDetails from './../modules/Blogs/Components/BlogsDetails/index';
-import LoginPage from './../modules/Login';
-import CreateBlog from './../modules/Blogs/Components/CreateBlog/index';
-
+import BlogDetails from "./../modules/Blogs/Components/BlogsDetails/";
+import Login from "./../modules/Login";
+import CreateBlog from "../modules/Blogs/Components/CreateBlog";
 
 const routes = [
   {
@@ -161,7 +160,7 @@ const routes = [
   },
   {
     path: "/login",
-    component: LoginPage,
+    component: Login,
     display: false,
     label: "Log In",
   },
