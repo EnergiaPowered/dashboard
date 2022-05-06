@@ -15,6 +15,7 @@ import Members from "./../modules/Members";
 import MemberProfile from "../modules/Members/Components/MemberProfile";
 import BlogDetails from "./../modules/Blogs/Components/BlogsDetails/";
 import Login from "./../modules/Login";
+import CreateBlog from "../modules/Blogs/Components/CreateBlog";
 
 const routes = [
   {
@@ -143,6 +144,12 @@ const routes = [
     path: "/member/profile/:id",
     component: MemberProfile,
     label: "Member Profile",
+    display: false,
+  },
+  {
+    path: "/blog/create",
+    component: CreateBlog,
+    label: "create blog",
     display: false,
   },
   {
