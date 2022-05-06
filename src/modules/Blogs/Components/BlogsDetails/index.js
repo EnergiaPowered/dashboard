@@ -15,12 +15,16 @@ const BlogDetails = (props) => {
 
   return (
     <Layout>
-      <h1>Blog Profile</h1>
       {blog && (
-        <>
-          <h4>{blog.title}</h4>
-          
-        </>
+        <div className="d-flex">
+	  <img src={blog.image_url} alt="blog" width="300" />
+	  <div className="ms-3">
+      	    <h1>Title: {blog.title}</h1>
+            <h2>Category: {blog.category}</h2>
+            <h3>Author: {blog.author}</h3>
+            <p>{blog.body}</p>
+	  </div>
+        </div>
       )}
     </Layout>
   );

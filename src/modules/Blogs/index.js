@@ -49,7 +49,7 @@ const Blogs = () => {
             <BlogsCard
               key={index}
               title={blog.title}
-              id={blog.id}
+              id={blog._id}
               handleDelete={handleDelete}
             />
           ))}

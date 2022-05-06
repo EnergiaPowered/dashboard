@@ -16,7 +16,6 @@ const ResponseTable = (props) => {
         res.data.headers = res.data.headers.map(
           (header, index) => header[`field_${index + 1}_label`]
         );
-        console.log(res.data);
         setForm(res.data);
       });
   }, [props.match.params.name]);
@@ -45,20 +44,43 @@ const ResponseTable = (props) => {
               buttonText="Download as XLS"
             />
           </div>
-          <hr />
-          <table id="table-to-xls" className="table">
+          <h3 className="text-center my-4">
+            Submission count: {form.content.length}
+          </h3>
+          <table
+            id="table-to-xls"
+            className="table table-striped table-bordered table-hover"
+            style={{ overflow: "auto" }}
+          >
             <thead>
-              <tr>
+              <tr style={{ overflow: "hidden" }}>
                 {form["headers"].map((header, index) => {
-                  return <th key={index}>{header}</th>;
+                  return (
+                    <th
+                      style={{
+                        width: "10rem",
+                        overflow: "auto",
+                      }}
+                      key={index}
+                    >
+                      {header}
+                    </th>
+                  );
                 })}
-                <th>Timestamp</th>
+                <th
+                  style={{
+                    width: "10rem",
+                    overflow: "auto",
+                  }}
+                >
+                  Timestamp
+                </th>
               </tr>
             </thead>
             <tbody>
               {form["content"].map((row, index) => {
                 return (
-                  <tr key={index}>
+                  <tr style={{ overflow: "hidden" }} key={index}>
                     {form["headers"].map((header, indx) => {
                       return <td key={indx}>{row[header]}</td>;
                     })}
