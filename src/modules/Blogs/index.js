@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Layout from "../../shared/Layout";
 import configs from "../../globals/config";
+import { Link } from "react-router-dom";
+
 import { Button } from "react-bootstrap";
 
 import BlogsCard from "./Components/BlogsCard/index";
@@ -35,8 +37,10 @@ const Blogs = () => {
     <Layout>
       <h1>Blogs</h1>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Button variant="primary" onClick={() => CreateBlog()}>
-          Create Blog
+        <Button variant="primary">
+          <Link to={"/createblog"} style={{ color: "#fff" }}>
+            Create Blog
+          </Link>
         </Button>
         <Button variant="danger" onClick={() => handleDeleteAll()}>
           Delete All
