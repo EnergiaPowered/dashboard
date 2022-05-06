@@ -20,25 +20,22 @@ const Blogs = () => {
 
   const handleDelete = async (id) => {
     axios.delete(`${configs.HOST}/blogs/${id}`).then((res) => {
-            setBlogs(res.data);
+      setBlogs(res.data);
     });
   };
+
   const handleDeleteAll = async () => {
     axios.delete(`${configs.HOST}/blogs/`).then((res) => {
-            setBlogs([]);
+      setBlogs([]);
     });
   };
-  const CreateBlog = async () => {
-    console.log("create blog");
-  };
-  console.log(blogs);
 
   return (
     <Layout>
       <h1>Blogs</h1>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Button variant="primary">
-          <Link to={"/createblog"} style={{ color: "#fff" }}>
+          <Link to={"/blog/create"} style={{ color: "#fff" }}>
             Create Blog
           </Link>
         </Button>

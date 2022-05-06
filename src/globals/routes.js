@@ -147,15 +147,15 @@ const routes = [
     display: false,
   },
   {
-    path: "/blog/:id",
-    component: BlogDetails,
-    label: "Blog Details",
+    path: "/blog/create",
+    component: CreateBlog,
+    label: "create blog",
     display: false,
   },
   {
-    path: "/createblog/",
-    component: CreateBlog,
-    label: "create blog",
+    path: "/blog/:id",
+    component: BlogDetails,
+    label: "Blog Details",
     display: false,
   },
   {
