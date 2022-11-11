@@ -2,7 +2,7 @@ const configs = {
   HOST:
     process.env.NODE_ENV === "development"
       ? "http://localhost:4000/api"
-      : "https://energia21.herokuapp.com/api",
+      : "https://ep-api.onrender.com/api",
   FRONT_HOST:
     process.env.NODE_ENV === "development"
       ? "http://localhost:3001"
