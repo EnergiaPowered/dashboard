@@ -26,9 +26,12 @@ const Email = () => {
     event.preventDefault();
 
     const data = { from, subject, emails, text: message };
-
+    const headers = {
+      "Content-Type": "application/json",
+      "x-auth-token": localStorage.getItem("user"),
+    };
     axios
-      .post(`${configs.HOST}/send-emails`, data)
+      .post(`${configs.HOST}/send-emails`, data, { headers })
       .then((res) => {
         alert(res.data.message);
         setFrom("");
